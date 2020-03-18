@@ -6,29 +6,19 @@ export const SimpleCounter: React.FC<{ externalValue: number }> = ({
   const [internalValue, setInternalValue] = useState(0);
   console.log(`render update - prop: ${externalValue} state: ${internalValue}`);
 
-  const propRef = useRef(externalValue);
-  const stateRef = useRef(internalValue);
-
-  useEffect(() => {
-    console.log(`update state ${internalValue}`);
-    stateRef.current = internalValue;
-  }, [internalValue]);
-
-  useEffect(() => {
-    console.log(`update prop ${externalValue}`);
-    propRef.current = externalValue;
-  }, [externalValue]);
-
-  useEffect(function afterRender() {
-    console.log(
-      `after update - prop: ${propRef.current} state: ${stateRef.current}`
-    );
-    return function beforeLeaving() {
+  useEffect(
+    function afterRender() {
       console.log(
-        `before leaving - prop: ${propRef.current} state: ${stateRef.current}`
+        `after update - prop: ${externalValue} state: ${internalValue}`
       );
-    };
-  }, []);
+      return function beforeLeaving() {
+        console.log(
+          `before leaving - prop: ${externalValue} state: ${internalValue}`
+        );
+      };
+    },
+    [externalValue, internalValue]
+  );
 
   return (
     <>

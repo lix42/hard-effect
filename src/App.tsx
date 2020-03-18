@@ -17,8 +17,6 @@ export default function App() {
       </button>
       <h1>Simple Counter</h1>
       <div>{shouldShowCounter && <SimpleCounter externalValue={value} />}</div>
-      <h1>Fancy Counter</h1>
-      <div>{shouldShowCounter && <FancyCounter externalValue={value} />}</div>
     </div>
   );
 }
