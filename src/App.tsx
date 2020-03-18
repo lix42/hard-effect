@@ -1,26 +1,24 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./App.css";
+import { SimpleCounter } from "./SimpleCounter";
+import { FancyCounter } from "./FancyCounter";
 
-function App() {
+export default function App() {
+  const [value, setValue] = React.useState(0);
+  const [shouldShowCounter, setShouldShowCounter] = React.useState(true);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <button type="button" onClick={() => setShouldShowCounter(_ => !_)}>
+        create/destroy counter
+      </button>
+      <button type="button" onClick={() => setValue(_ => _ + 1)}>
+        increase external value
+      </button>
+      <h1>Simple Counter</h1>
+      <div>{shouldShowCounter && <SimpleCounter externalValue={value} />}</div>
+      <h1>Fancy Counter</h1>
+      <div>{shouldShowCounter && <FancyCounter externalValue={value} />}</div>
     </div>
   );
 }
-
-export default App;
