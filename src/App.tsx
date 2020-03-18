@@ -2,6 +2,7 @@ import React from "react";
 import "./App.css";
 import { SimpleCounter } from "./SimpleCounter";
 import { FancyCounter } from "./FancyCounter";
+import { FancyCounter2 } from "./FancyCounter2";
 
 export default function App() {
   const [value, setValue] = React.useState(0);
