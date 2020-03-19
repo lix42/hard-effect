@@ -7,15 +7,10 @@ export const FancyCounter: React.FC<{ externalValue: number }> = ({
   const [internalValue, setInternalValue] = useState(externalValue);
   const [isPrime, setIsPrime] = useState(isValuePrime(internalValue));
 
-  const checkIsPrime = useCallback(
-    (value: number) => {
-      const result = isValuePrime(value);
-      if (isPrime !== result) {
-        setIsPrime(result);
-      }
-    },
-    [isPrime]
-  );
+  const checkIsPrime = useCallback((value: number) => {
+    const result = isValuePrime(value);
+    setIsPrime(result);
+  }, []);
 
   useEffect(() => {
     setInternalValue(externalValue);
