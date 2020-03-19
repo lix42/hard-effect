@@ -2,7 +2,7 @@ import React, { useEffect, useState, useCallback } from "react";
 import { isValuePrime } from "./util";
 
 export const FancyCounter: React.FC<{ externalValue: number }> = ({
-  externalValue,
+  externalValue
 }) => {
   const [internalValue, setInternalValue] = useState(externalValue);
   const [isPrime, setIsPrime] = useState(isValuePrime(internalValue));
